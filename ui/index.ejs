@@ -5,11 +5,23 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ShareIt</title>
+
+		<style>
+			div{
+				margin: 0.5em 0em ;
+			}
+			a{
+				text-decoration: none;
+			}
+		</style>
+
 	</head>
 	<body>
         <% for( let i = 0; i < files.length; i++ ) { %>
-            <span style="margin-right: 4px;"><%= parseInt(files[i].type) ? '-' : "+" %></span>
-            <a href=<%= `/${path}/${files[i].file}/${files[i].cipher}/` %>><%= files[i].name %> </a> <br>
+			<div>
+            	<span style="margin-right: 4px;"><%= parseInt(files[i].type) ? '-' : "+" %></span>
+            	<a href=<%= `/${path}/${files[i].type}/${files[i].cipher}/` %>><%= files[i].name %> </a> <br>
+			</div>
         <% } %>
     </body>
 </html>

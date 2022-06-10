@@ -11,12 +11,13 @@ app.set("views", path.join(__dirname, "../ui/"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const ROOT = process.env.ROOT || "E:\\Torrent\\Code With Mosh - Mastering React";
+const ROOT = process.env.ROOT.trim();
 
 app.get("/", async (req, res) => {
 	try {
 		res.render("index", { files: await readFolder(ROOT), path: encrypto("/") });
 	} catch (err) {
+		console.log(req.url, "\t", err);
 		res.send(err);
 	}
 });
@@ -31,6 +32,7 @@ app.get("/:path/:isFile/:file/", async (req, res) => {
 		}
 		res.render("index", { files: await readFolder(currPath), path: encrypto(fileReq) });
 	} catch (err) {
+		console.log(req.url, "\t", err);
 		res.send(err);
 	}
 });

@@ -3,7 +3,6 @@ const fs = require("fs").promises;
 const { encrypto } = require("./crypto");
 
 async function readFolder(currPath) {
-	console.log(currPath);
 	const data = await fs.readdir(currPath);
 	const result = [];
 	for (let i of data) {
@@ -13,7 +12,6 @@ async function readFolder(currPath) {
 			cipher: encrypto(i),
 		});
 	}
-	console.log(result);
 	return result;
 }
 
